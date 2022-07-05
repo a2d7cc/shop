@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { Context } from "../../index";
+import { Context } from "../index";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import {observer} from 'mobx-react-lite'
