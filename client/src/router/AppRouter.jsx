@@ -13,7 +13,6 @@ import { Context } from "..";
 
 const AppRouter = () => {
   const {user} = useContext(Context);
-  console.log(user)
 
 
   return (
@@ -29,7 +28,8 @@ const AppRouter = () => {
         <Route
           element={<ProtectedRoutes isAllowed={!user.isAuth} redirectPath="/shop" />}
         >
-          <Route path="auth" element={<Auth />} />
+          <Route path="login" element={<Auth />} />
+          <Route path="registration" element={<Auth />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Route>
