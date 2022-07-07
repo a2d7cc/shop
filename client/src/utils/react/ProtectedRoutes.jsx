@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-const AuthenticatedRoutes = ({ isAllowed, redirectPath = "/auth" }) => {
+const AuthenticatedRoutes = ({ isAllowed, redirectPath = "/login" }) => {
   const location = useLocation();
 
   if (isAllowed) {
