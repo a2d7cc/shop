@@ -10,8 +10,9 @@ import ProtectedRoutes from "../utils/react/ProtectedRoutes";
 import NotFound from "../pages/NotFound";
 import { useContext } from "react";
 import { Context } from "..";
+import {observer} from "mobx-react-lite";
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
   const {user} = useContext(Context);
 
 
@@ -35,6 +36,6 @@ const AppRouter = () => {
       </Route>
     </Routes>
   );
-};
+})
 
 export default AppRouter;

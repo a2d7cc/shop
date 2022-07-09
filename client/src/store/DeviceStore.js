@@ -2,28 +2,17 @@ import {makeAutoObservable} from 'mobx'
 
 export default class UserStore {
     constructor() {
-        this._types = [
-            {id: 1, name: 'Fridge'},
-            {id: 2, name: 'Mobiles'}
-        ]
-        this._brands = [
-            {id: 1, name: 'Lenovo'},
-            {id: 2, name: 'Samsung'},
-
-        ]
-        this._devices = [
-            {id: 1, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 2, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 3, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 4, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 5, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 6, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 7, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-            {id: 8, name: 'Redmi Note 8', price: 120, rating: 5, img: `https://i01.appmifile.com/webfile/globalimg/Cambridge/800-800/C3X/C3X-white.png`},
-        ]
+        this._types = []
+        this._brands = []
+        this._devices = []
+ 
 
         this._selectedType = {}
         this._selectedBrand = {}
+
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
 
         makeAutoObservable(this)
     }
@@ -48,6 +37,13 @@ export default class UserStore {
     setSelectedBrand(brand) {
         this._selectedBrand = brand
     }
+
+    setPage(page) {
+        this._page = page
+    }
+    setTotalCount(count) {
+        this._totalCount = count
+    }
     
     get types() {
         return this._types
@@ -68,5 +64,15 @@ export default class UserStore {
 
     get selectedBrand() {
         return this._selectedBrand
+    }
+
+    get totalCount() {
+        return this._totalCount
+    }
+    get page() {
+        return this._page
+    }
+    get limit() {
+        return this._limit
     }
 }

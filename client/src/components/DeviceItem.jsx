@@ -8,7 +8,7 @@ const DeviceItem = ({device}) => {
     <Col md={3} className="mt-3">
         <NavLink to={`/device/${device.id}`} >
         <Card style={{width: 150, cursor: 'pointer'}} border={'light'}>
-            <Image width={150} height={150} src={device.img} />
+            <Image width={150} height={150} src={process.env.react_app_api_url + device.img} />
             <div className='text-black mt-1 d-flex justify-content-between align-items-center'>
                <div>Samsung</div> 
                <div className='d-flex  align-items-center'>

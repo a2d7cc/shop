@@ -2,11 +2,20 @@ import React from "react";
 import { useContext } from "react";
 import { Context } from "../index";
 import { Navbar, Container, Nav, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import {observer} from 'mobx-react-lite'
+import { NavLink, useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
 const NavBar = observer(() => {
   const { user } = useContext(Context);
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    user.setUser({});
+    user.setIsAuth(false);
+    localStorage.setItem("token", null);
+    navigate("/login");
+  };
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
@@ -16,12 +25,18 @@ const NavBar = observer(() => {
           </NavLink>
           {user.isAuth ? (
             <Nav className="ml-auto" style={{ color: "white" }}>
-              <Button variant={"outline-light"} ><NavLink to='/admin'>Admin panel</NavLink></Button>
-              <Button variant={"outline-light"} className="ms-3"><NavLink to='/login'>Logout</NavLink></Button>
+              <NavLink to="/admin">Admin panel</NavLink>
+              <Button
+                variant={"outline-light"}
+                className="ms-3"
+                onClick={logOut}
+              >
+                Logout
+              </Button>
             </Nav>
           ) : (
             <Nav className="ml-auto" style={{ color: "white" }}>
-              <Button variant={"outline-light"} onClick={() => user.setIsAuth(true)}>Authorization</Button>
+              <NavLink to="/login">Authorization</NavLink>
             </Nav>
           )}
         </Container>

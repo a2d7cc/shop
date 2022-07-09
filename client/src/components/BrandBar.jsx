@@ -6,6 +6,10 @@ import { Card, Row } from "react-bootstrap";
 const BrandBar = observer(() => {
   const { device } = useContext(Context);
 
+  const toggleSelected = (brand) => {
+    Object.keys(device.selectedBrand).length? device.setSelectedBrand({}) : device.setSelectedBrand(brand)
+  }
+
   return (
       <Row className="d-flex">
 
@@ -15,7 +19,7 @@ const BrandBar = observer(() => {
               border={brand.id === device.selectedBrand.id ? 'primary' : 'light'}
               key={brand.id}
               className="p-3"
-              onClick={() => device.setSelectedBrand(brand)}
+              onClick={() => toggleSelected(brand)}
             >
               {brand.name}
             </Card>

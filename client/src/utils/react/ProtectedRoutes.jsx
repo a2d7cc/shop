@@ -8,7 +8,7 @@ const AuthenticatedRoutes = ({ isAllowed, redirectPath = "/login" }) => {
 
   if (isAllowed) {
     return <Outlet />;
-  }
+  } else {
     return (
       <Navigate
         to={redirectPath}
@@ -16,7 +16,7 @@ const AuthenticatedRoutes = ({ isAllowed, redirectPath = "/login" }) => {
         replace={true}
       />
     );
-
+  }
 };
 
 export default AuthenticatedRoutes;

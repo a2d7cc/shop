@@ -1,10 +1,10 @@
 import axios from "axios"
 
-const $host = axiost.create({
+const $host = axios.create({
     baseURL: process.env.react_app_api_url
 })
 
-const $authHost = axiost.create({
+const $authHost = axios.create({
     baseURL: process.env.react_app_api_url
 })
 
