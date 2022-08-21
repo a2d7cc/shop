@@ -42,7 +42,7 @@ class UserController {
             if(!verifyPassword) {
                 return next(ApiError.unauthorizedError('The password is wrong'))
             }
-            const token = generateToken(user.id, user.email, user.roke)
+            const token = generateToken(user.id, user.email, user.role)
             return res.json(token)
         } catch (error) {
             console.error(error)

@@ -13,6 +13,7 @@ module.exports = function(role) {
                  next(ApiError.unauthorizedError('Auth error'))
             }
             const userData = jwt.verify(token, process.env.secret_key)
+            console.log(userData)
             if(userData.role !== role) {
                  next(ApiError.unauthorizedError('Denied permission'))
             }

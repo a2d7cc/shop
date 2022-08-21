@@ -7,10 +7,10 @@ const ApiError = require('../exceptions/api-error')
 class DeviceController {
     async create(req, res, next) {
         try {
-            const {name, price, brandId, typeId, info} = req.body
-            const {img} = req.files
+            let {name, price, brandId, typeId, info} = req.body
+            const {file} = req.files
             const fileName = uuid.v4() + '.jpg'
-            img.mv(resolve(__dirname, '..', 'static', fileName))
+            file.mv(resolve(__dirname, '..', 'static', fileName))
             const device = await Device.create({name, price, brandId, typeId, info, img: fileName})
 
             if(info) {
@@ -58,7 +58,7 @@ class DeviceController {
     }
     async getOne(req, res, next) {
         try {
-            const {id} = req.query
+            const {id} = req.params
             const device = await Device.findOne({
                 where: {id},
                 include: [{model: DeviceInfo, as: 'info'}]

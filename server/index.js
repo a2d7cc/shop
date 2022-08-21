@@ -12,15 +12,14 @@ const port = process.env.port || 5000
 const app = express()
 const errorMidleware = require("./middlewares/error-middleware")
 
-
-app.use(express.json())
-app.use(fileUpload({}))
-app.use(cookie())
-app.use(express.static(path.resolve(__dirname, 'static')));
 app.use(cors({
     credentials: true,
     origin: process.env.client_url
 }))
+app.use(fileUpload({}))
+app.use(express.json())
+app.use(cookie())
+app.use(express.static(path.resolve(__dirname, 'static')));
 app.use('/api', router)
 app.use(errorMidleware)
 
